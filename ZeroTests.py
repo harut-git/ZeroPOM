@@ -13,4 +13,7 @@ class ZeroTests(unittest.TestCase):
 
     def test_addin(self):
         time.sleep(10)
-        RibbonPage(self.driver).check_addin()
+        current_test = RibbonPage(self.driver)
+        current_test.check_addin()
+        current_test.nd_frame_login()
+        # current_test.check_filing_log()
