@@ -1,7 +1,13 @@
 class Singleton(type):
-    _instances = {}
+    __instance = None
 
-    def __call__(cls, *args, **kwargs):
-        if cls not in cls._instances:
-            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
-        return cls._instances[cls]
+    @staticmethod
+    def inst():
+        if Singleton.__instance is None:
+            Singleton.__instance = Singleton(type)
+        return Singleton.__instance
+
+    # single call check
+    def __init__(self):
+        print("Constructor called!")
+

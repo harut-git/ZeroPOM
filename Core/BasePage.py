@@ -1,14 +1,20 @@
 import time
 import unittest
 
+from selenium import webdriver
+
+from Base.SingletonPattern import Singleton
+
 
 class BasePage(unittest.TestCase):
-    "Page class that all page models can inherit from"
 
-    def __init__(self, selenium_driver):
+    def __init__(self):
         "Constructor"
-        # We assume relative URLs start without a / in the beginning
-        self.driver = selenium_driver
+        self.driver = webdriver.Remote(
+            command_executor='http://localhost:9999',
+            desired_capabilities={
+                "debugConnectToRunningApp": 'true',
+            })
         # Visit and initialize xpaths for the appropriate page
 
     def get_name(self, name):

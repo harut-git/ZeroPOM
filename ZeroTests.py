@@ -1,19 +1,22 @@
 import time
 import unittest
-from Core.Driver import Driver
+import subprocess
 from Pages.RibbonPage import RibbonPage
 
 
 class ZeroTests(unittest.TestCase):
+    driver = None
+    outlook = None
 
     def setUp(self):
-        driver_obj = Driver()
-        driver_obj.start_driver()
-        self.driver = driver_obj.driver
+        self.driver = subprocess.Popen("C:\\Users\\QA7\\Documents\\Driver\\Winium.Desktop.Driver.exe")
+        self.outlook = subprocess.Popen("C:\\Program Files\\Microsoft Office\\root\\Office16\\OUTLOOK.exe")
 
     def test_addin(self):
         time.sleep(10)
-        current_test = RibbonPage(self.driver)
-        current_test.check_addin()
-        current_test.nd_frame_login()
-        # current_test.check_filing_log()
+        RibbonPage.inst().check_addin()
+        RibbonPage.inst().nd_frame_login()
+
+    def tearDown(self):
+        self.driver.kill()
+        self.outlook.kill()

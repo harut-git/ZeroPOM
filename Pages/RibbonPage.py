@@ -7,7 +7,16 @@ from Core.BasePage import BasePage
 
 
 class RibbonPage(BasePage):
-    __metaclass__ = Singleton
+    __instance = None
+
+    @staticmethod
+    def inst():
+        if RibbonPage.__instance is None:
+            RibbonPage.__instance = RibbonPage()
+        return RibbonPage.__instance
+
+    "Page class that all page models can inherit from"
+
     login = 'Login'
     username = 'Username'
     password = 'Password'
