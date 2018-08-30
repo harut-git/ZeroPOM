@@ -2,6 +2,7 @@ import time
 import unittest
 import subprocess
 from Pages.RibbonPage import RibbonPage
+from Modules.login import login
 
 
 class ZeroTests(unittest.TestCase):
@@ -13,9 +14,8 @@ class ZeroTests(unittest.TestCase):
         self.outlook = subprocess.Popen("C:\\Program Files\\Microsoft Office\\root\\Office16\\OUTLOOK.exe")
         #TODO check if program is loaded
 
-    def test_addin(self):
-        RibbonPage.inst().check_addin()
-        RibbonPage.inst().nd_frame_login()
+    def test_nd_sync(self):
+        login()
 
     def tearDown(self):
         self.driver.kill()
