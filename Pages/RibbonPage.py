@@ -23,6 +23,7 @@ class RibbonPage(BasePage):
     filing_log = 'Filing Log'
 
     def check_addin(self):
+        print "STAAAAAAAAAAAAAAAAAARTIIING TEST"
         elem_to_be_found = self.get_name(self.login)
         if elem_to_be_found is not None:
             print elem_to_be_found
