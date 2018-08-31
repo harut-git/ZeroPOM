@@ -1,6 +1,6 @@
-from Pages.RibbonPage import RibbonPage
+from Pages.AddinsPage import AddinsPage
 
 
 def login():
-    RibbonPage.inst().check_addin()
-    RibbonPage.inst().nd_frame_login()
+    AddinsPage().inst().addin_login()
+    AddinsPage().inst().nd_frame_login()
